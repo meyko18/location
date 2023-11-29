@@ -8,7 +8,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import getGeoCodeAddress from '../../utils/geoUtils';
 import BackgroundTimer from 'react-native-background-timer';
-import BackgroundFetch from "react-native-background-fetch";
+// import BackgroundFetch from "react-native-background-fetch";
 
 import MapView from './mapView';
 

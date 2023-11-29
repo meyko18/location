@@ -261,12 +261,12 @@ class SignInScreen extends Component {
                     userPosition: { latitude, longitude },
                     mapViewKey: this.state.mapViewKey + 1  // 修改key以触发重新渲染
                 }, () => {
-                    console.log("333",this.state.userPosition);
+                    // console.log("333",this.state.userPosition);
                 });
                 try {
                     
                     const address = await getGeoCodeAddress(latitude, longitude);
-                    console.log(address);
+                    // console.log(address);
                     if (address) {
                         this.setState({ location: address });
                     }
@@ -423,7 +423,7 @@ class SignInScreen extends Component {
             } else {
                 console.error('Failed to get current position for upload.');
             }
-
+            console.log("lastUploadTime...")
             const now = new Date();
             const formattedTime = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')} : ${String(now.getMinutes()).padStart(2, '0')}`;
             await AsyncStorage.setItem('lastUploadTime', formattedTime);
@@ -474,7 +474,7 @@ class SignInScreen extends Component {
     // 后台获取当前位置
     getCurrentPosition = () => {
         // 后台获取当前位置
-        console.log('在后台获取位置...');
+        // console.log('在后台获取位置...');
         return new Promise((resolve, reject) => {
             GeolocationService.getCurrentPosition(
                 position => {

@@ -44,6 +44,20 @@ class UserProfile extends Component {
         //常见问题
         this.props.navigation.navigate('Help');
     }
+    handleLogoutPress = async () => {
+        try {
+            // 清除本地存储的用户数据
+            await AsyncStorage.removeItem('userDetails');
+            await AsyncStorage.removeItem('token');
+            // 可以添加其他清理逻辑，比如清除Redux状态等
+    
+            // 导航到登录页面
+            this.props.navigation.navigate('Login');
+        } catch (error) {
+            console.error('Failed to logout', error);
+        }
+    }
+    
     //点击事件结束
 
     loadUserData = async () => {
@@ -96,6 +110,7 @@ class UserProfile extends Component {
                         {this.renderMenuItem("information-circle", "版本信息", "查看当前版本信息", this.handleVersionPress)}
                         {this.renderMenuItem("settings", "权限设置", "管理应用权限", this.handleSettingsPress)}
                         {this.renderMenuItem("help-circle-outline", "常见问题", "查看常见问题", this.handleHelpPress)}
+                        {this.renderMenuItem("exit", "注销登录", "", this.handleLogoutPress)}
                     </View>
                 </View>
             </LinearGradient>

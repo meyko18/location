@@ -17,6 +17,10 @@ class Login extends Component {
   componentWillUnmount() {
     Linking.removeEventListener('url', this.handleOpenURL);
   }
+  handleAdminLogin = async () => {
+    console.log("handleAdminLogin");
+
+  }
 
   handleLogin = async () => {
     try {
@@ -79,7 +83,15 @@ class Login extends Component {
             style={styles.dingLogo}
             resizeMode="contain"
           />
-          <Text>钉钉登录</Text>
+          <Text style={styles.buttonText}>钉钉登录</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.loginButton} onPress={this.handleAdminLogin}>
+          <Image
+            source={require('./../../../res/admin.png')}
+            style={styles.adminLogo}
+            resizeMode="contain"
+          />
+          <Text style={styles.buttonText}>管理员登录</Text>
         </TouchableOpacity>
       </View>
     );
@@ -95,13 +107,34 @@ const styles = StyleSheet.create({
     width: '60%',
     height: '30%',
   },
-  dingLogo: {
-    height: '40%',
-  },
   loginButton: {
-    marginTop: 30,
-    alignItems: 'center', 
+    marginTop: 10,
+    backgroundColor: '#FFFFFF', // 按钮背景颜色
+    flexDirection: 'row', // 水平排列图标和文本
+    alignItems: 'center',
     justifyContent: 'center',
+    paddingVertical: 10, // 垂直方向的内边距
+    paddingHorizontal: 20, // 水平方向的内边距
+    borderRadius: 5, // 按钮边缘圆角
+    width: '80%', // 按钮宽度
+    elevation: 2, // 在Android上添加阴影效果
+    shadowColor: '#000', // 在iOS上添加阴影效果
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+  },
+  buttonText: {
+    marginLeft: 10, // 文本与图标之间的间距
+    color: '#000', // 文本颜色
+    fontSize: 16, // 文本字体大小
+  },
+  dingLogo: {
+    height: 30, // 调整图标大小
+    width: 30, // 确保图标宽高一致
+  },
+  adminLogo: {
+    height: 30,
+    width: 30,
   }
 });
 
